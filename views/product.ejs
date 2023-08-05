@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display:inline-block">
+        <h1>Patient Name:</h1><h3><%=paymentDetail.name%></h3>
+        <h1>Patient Age:</h1><h3><%=paymentDetail.age%></h3>
+        <h1>Doctor Name:</h1><h3><%=paymentDetail.doctor%></h3>
+        <h1>Doctor Fees:</h1><h3><%=paymentDetail.fee%></h3>
+
+        <form action="/payment<%=paymentDetail._id%>" method="POST">
+            <script
+              src="https://checkout.stripe.com/checkout.js"
+              class="stripe-button"
+              data-key="<%=key%>"
+              data-name="<%=paymentDetail.name%>"
+              data-description="For Doctor;s Appointment"
+              data-amount="<%=paymentDetail.fee%>"
+              data-currency="INR">
+            </script>
+          </form>
+    </div>

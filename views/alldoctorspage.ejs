@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+body {
+    font-family: 'Maven Pro', sans-serif
+}
+
+body{
+  background-color: #eee;
+}
+
+.add{
+
+  border-radius: 20px;
+}
+
+.card{
+
+  border:none;
+  border-radius: 10px;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.card:hover{
+
+   -webkit-box-shadow: 3px 5px 17px -4px #777777; 
+box-shadow: 3px 5px 17px -4px #777777;
+}
+
+.ratings i {
+
+  color: green;
+}
+
+.apointment button{
+
+  border-radius: 20px;
+  background-color: #eee;
+  color: #000;
+  border-color: #eee;
+  font-size: 13px;
+}
+    </style>
+</head>
+<body>
+<div class=" m-5">
+    <form action="/appointmentbydoctor" method="post">
+        <input type="text" name="department" placeholder="Search By Department" required>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    
+    <div class="container mt-5 mb-5">
+        <!-- <div class="d-flex justify-content-between mb-3"> -->
+    
+            <!-- <span>Doctors</span> -->
+            <!-- <button class="btn btn-success add">Add Doctors</button> -->
+            
+        <!-- </div> -->
+     
+        <div class="row g-2 my-5">
+            <%doctors.map((doctor,index)=>{%>
+    
+            <div class="col-md-3 mx-5">
+                <div class="card p-2 py-3 text-center">
+                    
+    
+                    <div class="img mb-2">
+    
+                        <img src="https://img.freepik.com/premium-vector/doctor-surgeon-pharmacist-therapist-with-stethoscope-smiling-medic-worker-medical-staff_458444-338.jpg?w=2000" width="90" class="rounded-circle">
+                        
+                    </div>
+    
+                    <h5 class="mb-0"><%=doctor.name%></h5>
+                    <h5 class="mb-0">Department:<span><%=doctor.department%></span></h5>
+                    <h5 class="mb-0">Fee:<span><%=doctor.fee%></span></h5>
+                    <!-- <small><%=doctor.department%></small> -->
+                    <!-- <%=doctor.fee%> -->
+                    <div class="ratings mt-2">
+    
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        
+                    </div>
+    
+                    <div class="mt-4 apointment">
+    
+                        <a href="/seeprofile/<%=doctor._id%>"><button type="button" class="btn btn-success btn-rounded btn-block btn-lg"><i
+                            class="far fa-clock me-2"></i>See Profile</button>
+                          </a>
+                          <a href="/booking/<%=doctor._id%>"><button type="button" class="btn btn-success btn-rounded btn-block btn-lg"><i
+                            class="far fa-clock me-2"></i>Book now</button>
+                          </a>
+                        
+                    </div>
+    
+                </div>
+            
+                
+            </div>
+    <%})%>
+    
+    
+    
+            
+    
+       </div>
+
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    
+ <%doctors.map((doctor,index)=>{%>   
+      <section class="vh-100" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-md-9 col-lg-7 col-xl-5">
+              <div class="card" style="border-radius: 15px; background-color: #93e2bb;">
+                <div class="card-body p-4 text-black">
+                  <div>
+                    <span class="mb-4 my-2 display-6 fw-bold"  ><%=doctor.department%></span>
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                      <p class="small mb-0"><i class="far fa-clock me-2"></i></p>
+                      <p class="fw-bold mb-0" style="font-size: 20px;">INR <%=doctor.fee%></p>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center mb-4">
+                    <div class="flex-shrink-0">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-2.webp"
+                        alt="Generic placeholder image" class="img-fluid rounded-circle border border-dark border-3"
+                        style="width: 100px;">
+                    </div>
+                    <div class="flex-grow-1 ms-3">
+                      <div class="d-flex flex-row align-items-center mb-2">
+                        <p class="mb-0 me-2 fw-bold " style="font-size: 25px;"> <%=doctor.name%></p>
+                        <ul class="mb-0 list-unstyled d-flex flex-row" style="color: #1B7B2C;">
+                          <li>
+                            <i class="fas fa-star fa-xs"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star fa-xs"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star fa-xs"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star fa-xs"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star fa-xs"></i>
+                          </li>
+                        </ul>
+                      </div>
+                      <div>
+                        <button type="button" class="btn btn-outline-dark btn-rounded btn-sm"
+                          data-mdb-ripple-color="dark">+ Follow</button>
+                        <a href="/seeprofile/<%=doctor._id%>"><button type="button" class="btn btn-outline-dark btn-rounded btn-sm"
+                          data-mdb-ripple-color="dark">See profile</button>
+                        </a>
+                        <button type="button" class="btn btn-outline-dark btn-floating btn-sm" -->
+                          <!-- data-mdb-ripple-color="dark"><i class="fas fa-comment"></i></button> -->
+                      <!-- </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <p class="my-4 pb-1">52 comments</p>
+                  <a href="/booking/<%=doctor._id%>"><button type="button" class="btn btn-success btn-rounded btn-block btn-lg"><i
+                      class="far fa-clock me-2"></i>Book now</button>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%})%>
+     -->
+  <!-- <h1 class="text-center text-decoration-underline my-5">book Your  Appointment</h1>
+   <div class="container"> 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Doctor's Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Appointment Fee</th>
+            <th scope="col">Appointment</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+      <%doctors.map((doctor,index)=>{%>    
+            <td><%=index+1%></td>  
+            <td><%=doctor.name%></td>
+            <td><%=doctor.department%></td>
+            <td><%=doctor.designation%></td>
+            <td><%=doctor.fee%></td>
+            <td><a href="/booking/<%=doctor._id%>"><button type="button" class="btn btn-success btn-rounded btn-block btn-lg"><i
+                class="far fa-clock me-2"></i>Book now</button></a></td>
+            <td><a href="/booking/<%=doctor._id%>">Book Now</a></td>
+          </tr>
+        <%})%>  
+        </tbody>
+      </table> -->
+    <!-- </div> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
+<!-- </body> -->
+<!-- </html> --> 
